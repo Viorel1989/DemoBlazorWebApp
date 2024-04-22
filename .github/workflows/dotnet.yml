@@ -34,7 +34,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Run StyleCop
-      run: dotnet tool install --global StyleCop.Analyzers --version 1.2.0
+      run: dotnet add package StyleCop.Analyzers.Unstable --version 1.2.0.556
     - name: Analyze Code with StyleCop
       run: dotnet build /p:StyleCopEnabled=true /p:StyleCopCachePath=./.stylecop --no-incremental
     - name: Test
