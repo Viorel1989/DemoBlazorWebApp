@@ -33,15 +33,10 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Run .NET Code Analysis
-      uses: dotnet/code-analysis@main
-      id: code-analysis
-      with:
-        project: DemoBlazorWebApp/DemoBlazorWebApp.csproj
-        build-breaking: false
-        security: 5.0-all
-        performance: 5.0-all
-        all-categories: 5.0-recommended
+    - name: Run StyleCop
+      run: dotnet tool install --global StyleCop.Analyzers --version 1.2.0
+    - name: Analyze Code with StyleCop
+      run: dotnet build /p:StyleCopEnabled=true /p:StyleCopCachePath=./.stylecop --no-incremental
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
