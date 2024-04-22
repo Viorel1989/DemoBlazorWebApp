@@ -35,13 +35,13 @@ jobs:
       run: dotnet build --no-restore
     # GitHub CodeQL Analysis
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v1
+      uses: github/codeql-action/init@v2
       with:
         languages: dotnet
     - name: Autobuild
-      uses: github/codeql-action/autobuild@v1
+      uses: github/codeql-action/autobuild@v2
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v1
+      uses: github/codeql-action/analyze@v2
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
