@@ -33,10 +33,13 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Run StyleCop
-      run: dotnet add package StyleCop.Analyzers.Unstable --version 1.2.0.556
-    - name: Analyze Code with StyleCop
-      run: dotnet build /p:StyleCopEnabled=true /p:StyleCopCachePath=./.stylecop --no-incremental
+    # GitHub CodeQL Analysis
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: dotnet
+    - name: Analyze with CodeQL
+      uses: github/codeql-action/analyze@v1
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
