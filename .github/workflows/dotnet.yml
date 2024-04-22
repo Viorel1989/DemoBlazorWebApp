@@ -38,9 +38,10 @@ jobs:
       id: code-analysis
       with:
         project: DemoBlazorWebApp/DemoBlazorWebApp.csproj
-        build-breaking: true
-        style: minimum
-        all-categories: none
+        build-breaking: false
+        security: 5.0-all
+        performance: 5.0-all
+        all-categories: 5.0-recommended
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
