@@ -31,6 +31,14 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+    - name: Run .NET Code Analysis
+      uses: dotnet/code-analysis@v1
+      id: code-analysis
+      with:
+        project: DemoBlazorWebApp/DemoBlazorWebApp.csproj
+        build-breaking: true
+        style: minimum
+        all-categories: none
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
