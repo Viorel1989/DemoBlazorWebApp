@@ -42,7 +42,7 @@ jobs:
         path: /home/runner/work/DemoBlazorWebApp/DemoBlazorWebApp/release/
     #build a docker image and push it to a docker registry to be used in a VM
     - name: Build the Docker image
-      working-directory: DemoBlazorWebApp/
+      working-directory: ./DemoBlazorWebApp/
       run: docker build . -t viorel89/demoblazorewebapp:latest
 
     - name: Log into Docker Hub
